@@ -1,0 +1,515 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background: #172554;
+    color: white;
+    padding: 25px 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand {
+    padding: 10px;
+    margin-bottom: 35px;
+}
+
+.brand h2 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.brand p {
+    color: #bfdbfe;
+    font-size: 13px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-link {
+    color: #dbeafe;
+    text-decoration: none;
+    padding: 13px;
+    border-radius: 7px;
+    transition: 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: #2563eb;
+    color: white;
+}
+
+.logout-button {
+    margin-top: auto;
+    padding: 13px;
+    border: none;
+    border-radius: 7px;
+    background: #dc2626;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background: #b91c1c;
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+    min-width: 0;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.topbar h1 {
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+
+.topbar p,
+.section-description {
+    color: #64748b;
+}
+
+.admin-label {
+    background: #dbeafe;
+    color: #1d4ed8;
+    padding: 9px 17px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.page-section {
+    display: none;
+}
+
+.page-section.active {
+    display: block;
+}
+
+.page-section > h2 {
+    margin-bottom: 10px;
+}
+
+.section-description {
+    margin-bottom: 25px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+.stat-card p {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.stat-card h2 {
+    color: #1d4ed8;
+    font-size: 30px;
+}
+
+.welcome-card {
+    margin-top: 30px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    line-height: 1.8;
+}
+
+.welcome-card p {
+    color: #64748b;
+}
+
+@media (max-width: 900px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 650px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .sidebar nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .logout-button {
+        margin-top: 20px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    background: white;
+    border-radius: 12px;
+    margin-top: 25px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 850px;
+}
+
+th, td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 14px;
+}
+
+th {
+    background: #eff6ff;
+    color: #1e40af;
+}
+
+td {
+    color: #334155;
+}
+
+.status {
+    padding: 6px 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.approved {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.rejected {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.action-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin: 3px;
+}
+
+.approve-button {
+    background: #16a34a;
+}
+
+.reject-button {
+    background: #dc2626;
+}
+
+
+
+.employee-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.employee-toolbar input {
+    width: 300px;
+    max-width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+.employee-toolbar button,
+.form-buttons button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 7px;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+.employee-form-card {
+    display: none;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.employee-form-card h3 {
+    margin-bottom: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.form-grid label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.form-grid input,
+.form-grid select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.form-buttons button:last-child {
+    background: #64748b;
+}
+
+.employee-table-container {
+    overflow-x: auto;
+    background: white;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.employee-table-container table {
+    width: 100%;
+    min-width: 800px;
+    border-collapse: collapse;
+}
+
+.employee-table-container th,
+.employee-table-container td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 14px;
+}
+
+.employee-table-container th {
+    background: #eff6ff;
+    color: #1e40af;
+}
+
+.edit-button {
+    background: #2563eb;
+}
+
+.delete-button {
+    background: #dc2626;
+}
+
+@media (max-width: 650px) {
+    .employee-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .employee-toolbar input {
+        width: 100%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* Fix employee and admin forms */
+
+.employee-form-card:not([hidden]) {
+    display: block;
+}
+
+.employee-form-card[hidden] {
+    display: none;
+}
+
+/* User management header */
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    margin-bottom: 8px;
+}
+
+.section-header p {
+    color: #64748b;
+}
+
+.add-button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 7px;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.add-button:hover {
+    background: #1d4ed8;
+}
+
+.save-button {
+    background: #16a34a !important;
+}
+
+.cancel-button {
+    background: #64748b !important;
+}
+
+@media (max-width: 650px) {
+    .section-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+}
+
+/* Department Management */
+
+#departmentEmployeesCard {
+    margin-top: 30px;
+    padding-top: 10px;
+}
+
+#departmentEmployeesCard h3 {
+    color: #1e293b;
+}
+
+#departmentFormCard:not([hidden]),
+#departmentEmployeesCard:not([hidden]) {
+    display: block;
+}
+
+#departmentFormCard[hidden],
+#departmentEmployeesCard[hidden] {
+    display: none;
+}
+
+.view-button {
+    background: #0f766e;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 3px;
+}
+
+.view-button:hover {
+    background: #115e59;
+}
+
+#departmentTableBody button {
+    font-size: 13px;
+}
+
+@media (max-width: 650px) {
+    #departmentFormCard .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.create-account-button {
+    background: #263f61;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 3px;
+    font-size: 12px;
+}
+
+.create-account-button:hover {
+    background: #17243a;
+}
+
+#employeeAccountFormCard:not([hidden]) {
+    display: block;
+}
+
+#employeeAccountFormCard[hidden] {
+    display: none;
+}

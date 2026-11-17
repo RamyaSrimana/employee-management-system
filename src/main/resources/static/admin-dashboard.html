@@ -1,0 +1,680 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="admin-dashboard.css">
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <h2>EMS</h2>
+            <p>Employee Management</p>
+        </div>
+
+        <nav>
+            <a href="#dashboard" class="nav-link active">Dashboard</a>
+            <a href="#employees" class="nav-link">Employees</a>
+            <a href="#departments" class="nav-link">Departments</a>
+            <a href="#leaves" class="nav-link">Leave Requests</a>
+            <a href="#users" class="nav-link">User Management</a>
+        </nav>
+
+        <button type="button" id="logoutButton" class="logout-button">
+            Logout
+        </button>
+
+    </aside>
+
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <!-- Topbar -->
+
+        <header class="topbar">
+
+            <div>
+                <h1>Admin Dashboard</h1>
+                <p>Welcome back, <span id="adminEmail">Admin</span></p>
+            </div>
+
+            <div class="admin-label">ADMIN</div>
+
+        </header>
+
+
+        <!-- ====================================== -->
+        <!-- DASHBOARD SECTION -->
+        <!-- ====================================== -->
+
+        <section id="dashboard" class="page-section active">
+
+            <h2>Overview</h2>
+
+            <p class="section-description">
+                Here's what's happening in your organization.
+            </p>
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <p>Total Employees</p>
+                    <h2 id="employeeCount">--</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Total Departments</p>
+                    <h2 id="departmentCount">--</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Total Leave Requests</p>
+                    <h2 id="leaveCount">--</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Pending Leaves</p>
+                    <h2 id="pendingCount">--</h2>
+                </div>
+
+            </div>
+
+            <div class="welcome-card">
+
+                <h2>Welcome to Employee Management System</h2>
+
+                <p>
+                    Manage your employees, departments and leave requests
+                    from one place.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================== -->
+        <!-- EMPLOYEE MANAGEMENT SECTION -->
+        <!-- ====================================== -->
+
+        <section id="employees" class="page-section">
+
+            <h2>Employee Management</h2>
+
+            <p class="section-description">
+                Add, update, search and manage your employees.
+            </p>
+
+
+            <!-- Employee Toolbar -->
+
+            <div class="employee-toolbar">
+
+                <input
+                    type="text"
+                    id="employeeSearch"
+                    placeholder="Search employee by name..."
+                >
+
+                <button type="button" id="showEmployeeForm">
+                    + Add Employee
+                </button>
+
+            </div>
+
+
+            <!-- Employee Form -->
+
+            <div class="employee-form-card" id="employeeFormCard" hidden>
+
+                <h3 id="employeeFormTitle">Add New Employee</h3>
+
+                <form id="employeeForm">
+
+                    <input type="hidden" id="employeeId">
+
+                    <div class="form-grid">
+
+                        <div>
+                            <label>Employee Name</label>
+
+                            <input
+                                type="text"
+                                id="employeeName"
+                                placeholder="Enter employee name"
+                                required
+                            >
+                        </div>
+
+                        <div>
+                            <label>Email</label>
+
+                            <input
+                                type="email"
+                                id="employeeEmail"
+                                placeholder="Enter email address"
+                                required
+                            >
+                        </div>
+
+                        <div>
+                            <label>Salary</label>
+
+                            <input
+                                type="number"
+                                id="employeeSalary"
+                                placeholder="Enter salary"
+                                min="0"
+                                step="0.01"
+                                required
+                            >
+                        </div>
+
+                        <div>
+                            <label>Department</label>
+
+                            <select id="employeeDepartment" required>
+                                <option value="">Select Department</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-buttons">
+
+                        <button type="submit" id="saveEmployeeButton">
+                            Save Employee
+                        </button>
+
+                        <button type="button" id="cancelEmployeeForm">
+                            Cancel
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- ====================================== -->
+            <!-- CREATE EMPLOYEE LOGIN ACCOUNT FORM -->
+            <!-- ====================================== -->
+
+            <div class="employee-form-card"
+                 id="employeeAccountFormCard"
+                 hidden>
+
+                <h3>Create Employee Login Account</h3>
+
+                <form id="employeeAccountForm">
+
+                    <input type="hidden" id="accountEmployeeId">
+
+                    <div class="form-grid">
+
+                        <div>
+
+                            <label>Employee Name</label>
+
+                            <input
+                                type="text"
+                                id="accountEmployeeName"
+                                readonly
+                            >
+
+                        </div>
+
+                        <div>
+
+                            <label>Employee Email</label>
+
+                            <input
+                                type="email"
+                                id="accountEmployeeEmail"
+                                readonly
+                            >
+
+                        </div>
+
+                        <div>
+
+                            <label>Temporary Password</label>
+
+                            <input
+                                type="password"
+                                id="accountPassword"
+                                placeholder="Enter temporary password"
+                                minlength="6"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-buttons">
+
+                        <button type="submit" class="save-button">
+                            Create Account
+                        </button>
+
+                        <button
+                            type="button"
+                            id="cancelEmployeeAccount"
+                            class="cancel-button"
+                        >
+                            Cancel
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- Employee Table -->
+
+            <div class="employee-table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Salary</th>
+                            <th>Department</th>
+                            <th>Account Status</th>
+                            <th>Actions</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="employeeTableBody">
+
+                        <tr>
+                            <td colspan="7">Loading employees...</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================== -->
+        <!-- DEPARTMENT MANAGEMENT SECTION -->
+        <!-- ====================================== -->
+
+        <section id="departments" class="page-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>Department Management</h2>
+
+                    <p class="section-description">
+                        Add, update and manage company departments.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="showDepartmentForm"
+                    class="add-button"
+                >
+                    + Add Department
+                </button>
+
+            </div>
+
+
+            <!-- Department Form -->
+
+            <div id="departmentFormCard"
+                 class="employee-form-card"
+                 hidden>
+
+                <h3 id="departmentFormTitle">Add New Department</h3>
+
+                <form id="departmentForm">
+
+                    <input type="hidden" id="departmentId">
+
+                    <div class="form-grid">
+
+                        <div>
+
+                            <label>Department Name</label>
+
+                            <input
+                                type="text"
+                                id="departmentName"
+                                placeholder="Enter department name"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-buttons">
+
+                        <button
+                            type="submit"
+                            id="saveDepartmentButton"
+                            class="save-button"
+                        >
+                            Save Department
+                        </button>
+
+                        <button
+                            type="button"
+                            id="cancelDepartmentForm"
+                            class="cancel-button"
+                        >
+                            Cancel
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- Department Table -->
+
+            <div class="employee-table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Department Name</th>
+                            <th>Employee Count</th>
+                            <th>Actions</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="departmentTableBody">
+
+                        <tr>
+                            <td colspan="4">Loading departments...</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- Employees in Selected Department -->
+
+            <div
+                id="departmentEmployeesCard"
+                class="employee-table-container"
+                hidden
+            >
+
+                <h3
+                    id="departmentEmployeesTitle"
+                    style="padding: 20px;"
+                >
+                    Department Employees
+                </h3>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Salary</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="departmentEmployeesBody">
+
+                        <tr>
+                            <td colspan="4">
+                                Select a department to view employees.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================== -->
+        <!-- LEAVE REQUESTS SECTION -->
+        <!-- ====================================== -->
+
+        <section id="leaves" class="page-section">
+
+            <h2>Leave Requests</h2>
+
+            <p class="section-description">
+                Review employee leave applications and take action.
+            </p>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Employee</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="leaveTableBody">
+
+                        <tr>
+                            <td colspan="7">Loading leave requests...</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================== -->
+        <!-- USER MANAGEMENT SECTION -->
+        <!-- ====================================== -->
+
+        <section id="users" class="page-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>User Management</h2>
+
+                    <p>
+                        View and manage registered system users.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="showAdminForm"
+                    class="add-button"
+                >
+                    + Create Admin
+                </button>
+
+            </div>
+
+
+            <!-- Create Admin Form -->
+
+            <div
+                id="adminFormCard"
+                class="employee-form-card"
+                hidden
+            >
+
+                <h3>Create New Admin</h3>
+
+                <form id="adminForm">
+
+                    <div class="form-grid">
+
+                        <div>
+
+                            <label>Select Employee</label>
+
+                            <select id="adminEmployee" required>
+
+                                <option value="">
+                                    Select Employee
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div>
+
+                            <label>Email</label>
+
+                            <input
+                                type="email"
+                                id="adminEmailInput"
+                                placeholder="Employee email"
+                                readonly
+                                required
+                            >
+
+                        </div>
+
+                        <div>
+
+                            <label>Password</label>
+
+                            <input
+                                type="password"
+                                id="adminPassword"
+                                placeholder="Enter password"
+                                minlength="6"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-buttons">
+
+                        <button type="submit" class="save-button">
+                            Create Admin
+                        </button>
+
+                        <button
+                            type="button"
+                            id="cancelAdminForm"
+                            class="cancel-button"
+                        >
+                            Cancel
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- User Table -->
+
+            <div class="employee-table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>User ID</th>
+                            <th>Employee Name</th>
+                            <th>Email</th>
+                            <th>Employee ID</th>
+                            <th>Role</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="userTableBody">
+
+                        <tr>
+                            <td colspan="5">Loading users...</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- JavaScript -->
+
+<script src="admin-dashboard.js"></script>
+
+</body>
+</html>
+

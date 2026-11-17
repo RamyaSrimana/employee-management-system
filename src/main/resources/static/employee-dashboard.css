@@ -1,0 +1,273 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6fa;
+    color: #263248;
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 240px;
+    background: #17243a;
+    color: white;
+    padding: 25px 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h2 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.sidebar-subtitle {
+    color: #aebbd0;
+    margin-bottom: 35px;
+    font-size: 13px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-link {
+    color: #d7dfeb;
+    text-decoration: none;
+    padding: 13px;
+    border-radius: 7px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: #304766;
+    color: white;
+}
+
+.logout-btn {
+    margin-top: auto;
+    padding: 12px;
+    background: #dc4545;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+    min-width: 0;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.topbar p {
+    color: #788397;
+    margin-top: 5px;
+}
+
+.topbar span {
+    font-size: 14px;
+    color: #42546e;
+}
+
+.page-section {
+    display: none;
+}
+
+.page-section.active {
+    display: block;
+}
+
+.page-section > h2 {
+    margin-bottom: 22px;
+}
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 22px;
+}
+
+.profile-avatar {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #304766;
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.profile-details p {
+    color: #788397;
+    margin-top: 7px;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.info-card {
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+}
+
+.info-card span {
+    color: #788397;
+    font-size: 14px;
+}
+
+.info-card h3 {
+    margin-top: 12px;
+    overflow-wrap: anywhere;
+}
+
+.form-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    max-width: 650px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d6dce5;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.form-group textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.submit-btn {
+    background: #263f61;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.table-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
+
+th, td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #e9edf2;
+}
+
+th {
+    color: #56647a;
+    background: #f8f9fc;
+}
+
+.status {
+    display: inline-block;
+    padding: 6px 11px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status.PENDING {
+    background: #fff2d7;
+    color: #a56a00;
+}
+
+.status.APPROVED {
+    background: #dcf5e5;
+    color: #198348;
+}
+
+.status.REJECTED {
+    background: #ffe1e1;
+    color: #c33333;
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .sidebar nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .logout-btn {
+        margin-top: 20px;
+    }
+
+    .main-content {
+        padding: 18px;
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

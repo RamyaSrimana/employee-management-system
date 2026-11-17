@@ -1,0 +1,12 @@
+
+target/
+.settings/
+.classpath
+.project
+.factorypath
+.idea/
+.vscode/
+*.log
+.env
+application-local.properties
+src/main/resources/application.properties

@@ -1,0 +1,18 @@
+
+package com.example.employeemanagement.dto;
+
+public class DepartmentRequest {
+
+    private String name;
+
+    public DepartmentRequest() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
